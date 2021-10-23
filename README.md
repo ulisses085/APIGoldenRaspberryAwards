@@ -1,5 +1,7 @@
 # APIGoldenRaspberryAwards
 
+Api para vizualizar os vencedores do Golden Raspberry Awards, com maior e menor intervalo entre os prêmios.
+---
 Para executar o projeto, será necessário utilizar o Visual Studio 2019.
 
 O primeiro passo é colocar o arquivo movielist.csv no caminho c:\
