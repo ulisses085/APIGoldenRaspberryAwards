@@ -39,24 +39,26 @@ namespace APIGoldenRaspberryAwards.Services
                     line = reader.ReadLine();
                     values = line.Split(';');
 
-                    if (int.TryParse(values[0], out int year))
+                    if (!int.TryParse(values[0], out int year))
                     {
-                        var producers = values[3].Replace(" and ",",").Split(',');
+                        throw new Exception("Os dados do arquivo são inválidos");
+                    }
 
-                        foreach (var produce in producers)
-                        {
-                            moviesRepository.Insert(
-                                new WorstMovies()
-                                {
-                                    PrimaryKey = key,
-                                    Year = year,
-                                    Title = values[1],
-                                    Studio = values[2],
-                                    Producer = produce.Trim(),
-                                    Winner = !string.IsNullOrWhiteSpace(values[4])
-                                });
-                            key++;
-                        }
+                    var producers = values[3].Replace(" and ",",").Split(',');
+
+                    foreach (var produce in producers)
+                    {
+                        moviesRepository.Insert(
+                            new WorstMovies()
+                            {
+                                PrimaryKey = key,
+                                Year = year,
+                                Title = values[1],
+                                Studio = values[2],
+                                Producer = produce.Trim(),
+                                Winner = !string.IsNullOrWhiteSpace(values[4])
+                            });
+                        key++;
                     }
                 }
             }

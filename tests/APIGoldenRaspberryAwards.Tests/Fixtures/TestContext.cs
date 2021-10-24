@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.TestHost;
 using System.Net.Http;
 
-namespace APIGoldenRaspberryAwards.Tests.IntegrationTests
+namespace APIGoldenRaspberryAwards.Tests.Fixtures
 {
     public class TestContext
     {
